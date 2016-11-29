@@ -1,5 +1,26 @@
-# 4 train at 2:16
-
 def list
   `gdrive sync list`
+end
+
+def contents(folder_id)
+  `gdrive sync content #{folder_id}`
+end
+
+CONTENTS_REGEX = /(\w+) +([^ ]+)/
+
+def folder_id_by_name(name)
+  lines = list.split("\n")
+  headers = lines.shift.match CONTENTS_REGEX
+  lines.map { |l| l.match(CONTENTS_REGEX) }.find { |r| r[2] == name }[1]
+end
+
+def file_id_hash(folder_id)
+  lines = contents(folder_id).split("\n")
+  headers = lines.shift.match CONTENTS_REGEX
+  {}.tap do |h|
+    lines.each do |l|
+      m = l.match(CONTENTS_REGEX)
+      h[m[2]] = m[1]
+    end
+  end
 end
