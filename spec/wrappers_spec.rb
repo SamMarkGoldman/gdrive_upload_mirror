@@ -35,9 +35,15 @@ RSpec.describe 'wrappers' do
       expect(subject.is_a? Hash).to be true
     end
 
-    it 'has keys with mp3 suffix' do
+    it 'has keys without elipses' do
       subject.keys.each do |k|
-        expect(k[-4..-1]).to eq '.mp3'
+        expect(k).not_to include '...'
+      end
+    end
+
+    it 'has keys to be max 29 chars' do
+      subject.keys.each do |k|
+        expect(k.length).to be <= 29
       end
     end
   end
