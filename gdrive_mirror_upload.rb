@@ -1,3 +1,5 @@
+require_relative 'wrapper'
+
 remote_folder_name = ARGV[0]
 local_folder_name  = ARGV[1]
 remote_folder_id = folder_id_by_name(remote_folder_name)
