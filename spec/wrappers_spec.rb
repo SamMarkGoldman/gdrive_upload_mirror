@@ -50,13 +50,13 @@ RSpec.describe 'wrappers' do
     before do
       allow(Dir).to receive(:[]) {
         [
-          "20161120_atc_a_tribe_called_r...wn_its_powwow-step_style.mp3",
-          "20161120_atc_brazil-barberships-machismo.mp3",
-          "20161120_atc_civil_rights_issues_in_appointments.mp3",
-          "20161120_atc_germany_merkel_runs_again.mp3",
-          "20161120_atc_south_korea_presidential_protest.mp3",
-          "20161120_atc_unc_student_body_prez.mp3",
-          "20161120_atc_wyh_alt_dinner.mp3"
+          "../foo/20161120_atc_a_tribe_called_r...wn_its_powwow-step_style.mp3",
+          "../foo/20161120_atc_brazil-barberships-machismo.mp3",
+          "../foo/20161120_atc_civil_rights_issues_in_appointments.mp3",
+          "../foo/20161120_atc_germany_merkel_runs_again.mp3",
+          "../foo/20161120_atc_south_korea_presidential_protest.mp3",
+          "../foo/20161120_atc_unc_student_body_prez.mp3",
+          "../foo/20161120_atc_wyh_alt_dinner.mp3"
         ]
       }
     end

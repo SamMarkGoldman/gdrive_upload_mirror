@@ -16,7 +16,7 @@ end
 
 def remote_file_ids_to_remove(remote_folder_id, local_dir)
   remote_files = file_id_hash(remote_folder_id)
-  local_files = Dir["#{local_dir}/*"]
+  local_files = Dir["#{local_dir}/*"].map { |f| File.basename f }
   (remote_files.keys - local_files).map { |name| remote_files[name] }
 end
 
