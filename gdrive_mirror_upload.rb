@@ -1,4 +1,4 @@
-require_relative 'wrapper'
+require_relative 'wrappers'
 
 remote_folder_name = ARGV[0]
 local_folder_name  = ARGV[1]
