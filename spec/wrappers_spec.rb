@@ -42,4 +42,28 @@ RSpec.describe 'wrappers' do
     end
   end
 
+  describe '#remote_file_ids_to_remove' do
+    let (:result) { ["0B3oKY7yYQojlQndsenJvdlcwVHM", "0B3oKY7yYQojlZVh2eThwZ1REM3M"] }
+
+    subject { remote_file_ids_to_remove('npr_mp3', 'y') }
+
+    before do
+      allow(Dir).to receive(:[]) {
+        [
+          "20161120_atc_a_tribe_called_r...wn_its_powwow-step_style.mp3",
+          "20161120_atc_brazil-barberships-machismo.mp3",
+          "20161120_atc_civil_rights_issues_in_appointments.mp3",
+          "20161120_atc_germany_merkel_runs_again.mp3",
+          "20161120_atc_south_korea_presidential_protest.mp3",
+          "20161120_atc_unc_student_body_prez.mp3",
+          "20161120_atc_wyh_alt_dinner.mp3"
+        ]
+      }
+    end
+
+    it 'finds the two not online' do
+      expect(subject.sort).to eq result.sort
+    end
+  end
+
 end

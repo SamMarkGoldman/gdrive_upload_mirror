@@ -6,6 +6,20 @@ def contents(folder_id)
   `gdrive sync content #{folder_id}`
 end
 
+def delete_file(file_id)
+  `gdrive delete #{file_id}`
+end
+
+def upload_dir(remote_folder_id, local_dir)
+  `gdrive sync upload #{local_dir}/ #{remote_folder_id}`
+end
+
+def remote_file_ids_to_remove(remote_folder_id, local_dir)
+  remote_files = file_id_hash(remote_folder_id)
+  local_files = Dir["#{local_dir}/*"]
+  (remote_files.keys - local_files).map { |name| remote_files[name] }
+end
+
 CONTENTS_REGEX = /(\w+) +([^ ]+)/
 
 def folder_id_by_name(name)
