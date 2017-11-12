@@ -3,6 +3,9 @@ def list
 end
 
 def contents(folder_id)
+  # handle this response
+  # Found name collision between 0B3oKY7yYQojlSWtNRnVtQk94cnM and 0B3oKY7yYQojlX0dCNXNjM1hhZVU
+
   `gdrive sync content #{folder_id}`
 end
 
@@ -20,7 +23,7 @@ def remote_file_ids_to_remove(remote_folder_id, local_dir)
   (remote_files.keys - local_files).map { |name| remote_files[name] }
 end
 
-CONTENTS_REGEX = /(\w+) +([^ ]+)/
+CONTENTS_REGEX = /([\w\-_]+) +([^ ]+)/
 
 def folder_id_by_name(name)
   lines = list.split("\n")
