@@ -10,6 +10,7 @@ def contents(folder_id)
 end
 
 def delete_file(file_id)
+  sleep 4
   `gdrive delete #{file_id}`
 end
 
